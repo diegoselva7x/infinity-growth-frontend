@@ -1,0 +1,176 @@
+@model InfinityGrowth_UI.Models.UsuariosViewModel
+
+@{
+    ViewBag.Title = "Registrar Cliente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="flex items-center justify-center">
+    <div class="bg-[var(--secondary-color)] flex rounded-2xl text-[var(--text-primary)]">
+        <div>
+            <img class="rounded-l-2xl h-full object-cover object-center" src="~/public/img/imageClientRegister.webp" alt="Imagen de registro" width="700px">
+        </div>
+        <div class="flex flex-col justify-center px-20 py-10">
+            <h2 class="text-4xl font-bold text-center mb-6">Registrar Cliente</h2>
+
+            @using (Html.BeginForm("RegistroCliente", "Asesor", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div id="form" class="mt-5 flex flex-col gap-8 items-center justify-center">
+                    <div class="flex gap-8 flex-wrap w-full">
+                        <div class="flex-1 w-96">
+                            @Html.LabelFor(m => m.Correo, new { @class = "block text-left font-semibold mb-1" })
+                            @Html.TextBoxFor(m => m.Correo, new 
+                                {
+                                    placeholder = "Correo del cliente"
+                                })
+                            @Html.ValidationMessageFor(m => m.Correo, "", new { @class = "text-[var(--negative-color)] font-medium text-sm mt-1" })
+                        </div>
+                        <div class="flex-1 w-96">
+                            @Html.LabelFor(m => m.Nombre, new { @class = "block text-left font-semibold mb-1" })
+                            @Html.TextBoxFor(m => m.Nombre, new
+                                {
+                                    placeholder = "Nombre del cliente"
+                                })
+                            @Html.ValidationMessageFor(m => m.Nombre, "", new { @class = "text-[var(--negative-color)] font-medium text-sm mt-1" })
+                        </div>
+                    </div>
+
+                    <div class="flex gap-8 flex-wrap w-full">
+                        <div class="flex-1 w-96">
+                            @Html.LabelFor(m => m.Apellido1, new { @class = "block text-left font-semibold mb-1" })
+                            @Html.TextBoxFor(m => m.Apellido1, new 
+                                {
+                                    placeholder = "Primer apellido"
+                                })
+                            @Html.ValidationMessageFor(m => m.Apellido1, "", new { @class = "text-[var(--negative-color)] font-medium text-sm mt-1" })
+                        </div>
+                        <div class="flex-1 w-96">
+                            @Html.LabelFor(m => m.Apellido2, new { @class = "block text-left font-semibold mb-1" })
+                            @Html.TextBoxFor(m => m.Apellido2, new 
+                                { 
+                                    placeholder = "Segundo apellido"
+                                })
+                            @Html.ValidationMessageFor(m => m.Apellido2, "", new { @class = "text-[var(--negative-color)] font-medium text-sm mt-1" })
+                        </div>
+                    </div>
+
+                    <div class="flex gap-8 flex-wrap w-full">
+                        <div class="flex-1 w-96">
+                            @Html.LabelFor(m => m.FechaNacimiento, new { @class = "block text-left font-semibold mb-1" })
+                            @Html.TextBoxFor(m => m.FechaNacimiento, new
+                                {
+                                    @id = "fechaNacimiento",
+                                    placeholder = "Selecciona una fecha"
+                                })
+                            @Html.ValidationMessageFor(m => m.FechaNacimiento, "", new { @class = "text-[var(--negative-color)] font-medium text-sm mt-1" })
+                        </div>
+                        <div class="flex-1 w-96">
+                            @Html.LabelFor(m => m.Direccion, new { @class = "block text-left font-semibold mb-1" })
+                            @Html.TextBoxFor(m => m.Direccion, new 
+                                { 
+                                    placeholder = "Dirección del cliente"
+                                })
+                            @Html.ValidationMessageFor(m => m.Direccion, "", new { @class = "text-[var(--negative-color)] font-medium text-sm mt-1" })
+                        </div>
+                    </div>
+
+                    <div class="flex-1 w-96">
+                        @Html.LabelFor(m => m.Foto, new { @class = "block text-left font-semibold mb-1" })
+
+                        <div id="drop-area" class="flex justify-center items-center h-36 border-2 border-dashed border-[var(--accent-color)] rounded-lg p-4 text-center cursor-pointer bg-[var(--bg-color2)] hover:opacity-65 hover:border-[var(--primary-color)] transition">
+                            <p id="display-text" class="text-sm text-[var(--text-primary)] opacity-50 mb-2">Arrastra la imagen aquí o haz clic para seleccionar</p>
+                            <input type="file"
+                                   name="Foto"
+                                   id="Foto"
+                                   accept="image/*"
+                                   class="hidden" />
+                            <img id="preview" class="mx-auto h-full w-full object-contain hidden mt-2" />
+                        </div>
+
+                        @Html.ValidationMessageFor(m => m.Foto, "", new { @class = "text-[var(--negative-color)] font-medium text-sm mt-1" })
+                    </div>
+
+                    <div class="mt-8 w-80">
+                        <button type="submit" class="btn-primary font-bold text-center w-full">
+                            Registrar Cliente
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+@* <style>
+/* Fondo del calendario */
+.flatpickr-calendar {
+    background-color: var(--bg-color2) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--primary-color) !important;
+}
+
+/* Texto del header */
+.flatpickr-months .flatpickr-month {
+    color: var(--text-primary) !important;
+}
+
+.flatpickr-weekday{
+    color: var(--text-primary) !important;
+    opacity: 0.5 !important;
+}
+
+/* Botones de navegación */
+.flatpickr-prev-month, .flatpickr-next-month {
+    color: var(--primary-color) !important;
+}
+
+/* Días */
+.flatpickr-day {
+    color: var(--text-primary) !important;
+    border-radius: 6px !important;
+}
+
+/* Día seleccionado */
+.flatpickr-day.selected, .flatpickr-day.startRange, .flatpickr-day.endRange {
+    background: var(--primary-color) !important;
+    color: var(--bg-color) !important;
+}
+
+/* Hover sobre días */
+.flatpickr-day:hover {
+    background: var(--hover-color) !important;
+    color: var(--bg-color) !important;
+}
+</style> *@
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/Pages/RegistroCliente/RegistroCliente.js"></script>
+
+    <script>
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <text>
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Error!',
+                        text: '@TempData["ErrorMessage"]',
+                    });
+            </text>
+        }
+
+        @if (TempData["SuccessMessage"] != null && TempData["SuccessMessage"].ToString() == "Cliente registrado con éxito.")
+        {
+            <text>
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Éxito!',
+                        text: '@TempData["SuccessMessage"]',
+                    });
+            </text>
+        }
+    </script>
+}

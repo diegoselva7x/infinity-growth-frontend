@@ -1,0 +1,93 @@
+@model InfinityGrowth_UI.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout_Login.cshtml";
+}
+
+<section class="flex items-center justify-center">
+    <div class="bg-[var(--secondary-color)] flex rounded-2xl text-[var(--text-primary)] shadow-xl overflow-hidden">
+        <div>
+            <img class="rounded-l-2xl" src="~/public/img/imageLogin.webp" alt="Imagen de inicio de sesión" height="auto" width="400px">
+        </div>
+
+        <div class="flex flex-col justify-center px-20 py-10">
+            <img class="mb-10" src="~/public/img/logo-png-dark.svg" id="primary-logo-login" alt="Logo InfinityGrowth" height="auto" width="320px">
+
+            <h2 class="text-4xl font-bold text-center mb-6">Iniciar Sesión</h2>
+
+            @using (Html.BeginForm("Login", "Auth", FormMethod.Post, new { id = "formLogin", @class = "flex flex-col gap-5" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="text-left max-w-96">
+                    @Html.LabelFor(u => u.Correo, "Usuario", new { @class = "block text-left font-semibold mb-1" })
+                    @Html.TextBoxFor(u => u.Correo, new {
+                        @id = "correo",
+                        placeholder = "Correo electrónico",
+                        })
+                    @Html.ValidationMessageFor(u => u.Correo, "", new { @class = "text-[var(--negative-color)] font-medium text-sm mt-1" })
+                </div>
+
+                <div class="text-left max-w-96">
+                    <div class="flex justify-between items-center mb-1">
+                        @Html.LabelFor(u => u.Password, "Contraseña", new { @class = "block text-left font-semibold" })
+                        <a asp-controller="Auth" asp-action="CambiarContrasena" class="text-sm text-[var(--text-primary)] font-bold underline hover:opacity-70 transition">
+                            ¿Olvidaste tu contraseña?
+                        </a>
+                    </div>
+                    @Html.PasswordFor(u => u.Password, new {
+                        @id = "password",
+                        })
+                    @Html.ValidationMessageFor(u => u.Password, "", new { @class = "text-[var(--negative-color)] font-medium text-sm mt-1" })
+
+                    @if (!string.IsNullOrEmpty(ViewBag.LoginError as string))
+                    {
+                        <p class="text-[var(--negative-color)] font-medium text-md mt-4 text-center">@ViewBag.LoginError</p>
+                    }
+                </div>
+
+                <div class="mt-8 w-96 flex flex-col gap-2">
+                    <button id="btnLogin" type="submit" class="btn-primary font-bold text-center">
+                        Iniciar Sesión
+                    </button>
+                </div>
+                
+                <p class="text-sm text-center mt-4 text-[var(--text-primary)]">
+                    ¿No tienes una cuenta?
+                    <a asp-controller="Home" asp-action="FormularioInteres" class="font-bold text-[var(--link-color)] hover:opacity-70 transition">
+                        Solicitud de Registro
+                    </a>
+                </p>
+            }
+        </div>
+    </div>
+</section>
+
+@if (ViewBag.ShowOTPModal != null && ViewBag.ShowOTPModal == true)
+{
+    <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <div class="bg-[var(--secondary-color)] p-6 rounded-lg shadow-lg w-96">
+            <h2 class="text-xl text-[var(--text-primary)] font-semibold mb-4">Ingrese el código OTP</h2>
+
+            <form method="post" asp-controller="Auth" asp-action="ValidatetOTP">
+                <input type="hidden" name="userId" value="@TempData["UserId"]" />
+                <input type="text" name="otpCode" class="w-full p-2 border rounded-md mb-4" placeholder="Código OTP" required />
+                <button type="submit" class="btn-primary w-full">Validar OTP</button>
+            </form>
+
+            @if (ViewBag.OTPError != null)
+            {
+                <p class="text-[var(--negative-color)] text-sm mt-2">@ViewBag.OTPError</p>
+            }
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@3.2.12/dist/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/Pages/Auth/Login.js"></script>
+}

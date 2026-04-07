@@ -1,0 +1,395 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --bg-color: #111214;
+    --bg-color2: #1A1C1F;
+    --accent-color: #2B2D31;
+    --text-primary: #EDEDED;
+    --text-secondary: #A5A5A5;
+    --primary-color: #8FBF2B;
+    --hover-color: #A5D435;
+    --secondary-color: #22262F;
+    --secondaryBtn-color: #E2E2E2;
+    --positive-color: #21B26F;
+    --bg-positive-color: #4ade802c;
+    --negative-color: #E84855;
+    --bg-negative-color: #f871712c;
+    --link-color: #4DA3FF;
+    --border-radius: 8px;
+    --transition: all 0.3s ease;
+}
+
+:root.light {
+    --bg-color: #ffffff;
+    --bg-color2: #f3f3f3;
+    --accent-color: #cdcdcd;
+    --text-primary: #1E1F22;
+    --text-secondary: #5A5A5A;
+    --primary-color: #658C1E;
+    --hover-color: #7BAE2F;
+    --secondary-color: #e7e9eb;
+    --secondaryBtn-color: #15161A;
+    --positive-color: #2D9F66;
+    --bg-positive-color: #2880484b;
+    --negative-color: #E43D4B;
+    --bg-negative-color: #f871714b;
+    --link-color: #0055FF;
+    --border-radius: 8px;
+    --transition: all 0.3s ease;
+}
+
+body {
+    display: grid;
+    min-height: 100dvh;
+    grid-template-rows: auto 1fr auto;
+
+    font-family: 'Inter', sans-serif;
+
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    font-family: 'Teko', sans-serif;
+    color: var(--text-primary);
+    font-size: 36px;
+    font-weight: 600;
+}
+
+h1 {
+    font-family: 'Teko', sans-serif;
+    color: var(--text-primary);
+    font-size: 40px;
+    font-weight: 600;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+    background-color: var(--bg-color2);
+    color: var(--text-primary);
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    width: 100%;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--third-color);
+    opacity: 0.6;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(151, 174, 77, 0.3);
+    background-color: var(--bg-color);
+}
+
+input:hover,
+textarea:hover,
+select:hover {
+    border-color: var(--hover-color);
+}
+
+input:active,
+textarea:active,
+select:active {
+    background-color: var(--bg-color);
+    border-color: var(--primary-color);
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-bottom: 0.2rem;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+label::after {
+    content: " *";
+    color: var(--negative-color);
+}
+
+.font-teko {
+    font-family: 'Teko', sans-serif;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #15161A;
+    text-align: center;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--hover-color);
+    color: #15161A;
+    scale: 1.05;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--secondaryBtn-color);
+    padding: 10px 15px;
+    border: 1px solid var(--secondaryBtn-color);
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+    box-shadow: 0 2px 3px var(--accent-color);
+    scale: 1.05;
+}
+
+.sidebar-link {
+    display: flex;
+    gap: calc(var(--spacing) * 2);
+    padding: calc(var(--spacing) * 2);
+    color: var(--text-primary);
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.sidebar-link:hover {
+    background-color: var(--accent-color);
+    cursor: pointer;
+}
+
+.card {
+    background-color: var(--third-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.heading {
+    color: var(--secondary-color);
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.link {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.link:hover {
+    color: var(--hover-color);
+}
+
+.divider {
+    border-top: 1px solid var(--accent-color);
+    margin: 20px 0;
+}
+
+.bg-opacity-50 {
+    background-color: rgba(0, 0, 0, 0.89);
+}
+
+/* CLASES DE SWEET ALERT */
+
+.swal2-popup {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    border-radius: 8px;
+}
+
+.swal2-title {
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.swal2-content {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.swal2-confirm {
+    background-color: var(--primary-color);
+    color: #15161A;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+/* CLASES DE FLATPICKR */
+
+/* Fondo del calendario */
+.flatpickr-calendar {
+    background-color: var(--bg-color2) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--primary-color) !important;
+}
+
+/* Texto del header */
+.flatpickr-months .flatpickr-month {
+    color: var(--text-primary) !important;
+    background: var(--bg-color2) !important;
+}
+
+.flatpickr-weekday {
+    color: var(--text-primary) !important;
+    opacity: 0.5 !important;
+}
+
+/* Botones de navegación */
+.flatpickr-prev-month,
+.flatpickr-next-month {
+    fill: var(--primary-color) !important;
+}
+
+.flatpickr-prev-month:hover,
+.flatpickr-next-month:hover {
+    fill: var(--hover-color) !important;
+}
+
+/* Días */
+.flatpickr-day {
+    color: var(--text-primary) !important;
+    border-radius: 6px !important;
+}
+
+/* Día seleccionado */
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange {
+    background: var(--primary-color) !important;
+    color: var(--bg-color) !important;
+}
+
+/* Hover sobre días */
+.flatpickr-day:hover {
+    background: var(--hover-color) !important;
+    color: var(--bg-color) !important;
+}
+
+/* Option del select meses */
+.flatpickr-monthDropdown-months {
+    background-color: var(--bg-color2) !important;
+    border: 1px solid var(--primary-color) !important;
+}
+
+/* CLASES PARA GRID.JS */
+
+/* Estilo para la tabla */
+.gridjs-table {
+    background-color: var(--bg-color2) !important;
+    color: var(--text-primary) !important;
+    width: 100% !important;
+    table-layout: fixed !important;
+}
+
+.gridjs-wrapper:nth-last-of-type(2) {
+    border: none !important;
+    border-top-left-radius: 8px !important;
+    border-top-right-radius: 8px !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+.gridjs-wrapper {
+    background-color: var(--bg-color) !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.gridjs-tr th {
+    background-color: var(--accent-color) !important;
+}
+
+.gridjs-tr:hover td {
+    background-color: var(--hover-color) !important;
+    color: var(--text-primary) !important;
+    font-weight: 500 !important;
+}
+
+.gridjs-tr td {
+    border-bottom: 1px solid var(--accent-color) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Estilo para las cabeceras (th) */
+.gridjs-table th {
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+    padding: 0.75rem 1.5rem !important;
+    text-align: left !important;
+}
+
+/* Estilo para las celdas (td) */
+.gridjs-table td {
+    background-color: var(--bg-color2) !important;
+    color: var(--text-primary) !important;
+    padding: 0.75rem 1.5rem !important;
+    text-align: left !important;
+}
+
+/* Efecto hover en las filas */
+.gridjs-table tr:hover {
+    background-color: var(--hover-color) !important;
+}
+
+/* Eliminación de bordes */
+.gridjs-table th,
+.gridjs-table td {
+    border: none !important;
+}
+
+.gridjs-search input {
+    background-color: var(--bg-color2) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--accent-color) !important;
+    border-radius: 8px !important;
+    padding: 0.6rem 1rem !important;
+    width: 100% !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease !important;
+    outline: none !important;
+}
+
+.gridjs-search input::placeholder {
+    color: var(--third-color) !important;
+    opacity: 0.6 !important;
+}
+
+.gridjs-search input:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px rgba(151, 174, 77, 0.3) !important;
+    background-color: var(--bg-color) !important;
+}
+
+.gridjs-search input:hover {
+    border-color: var(--hover-color) !important;
+}
+
+.gridjs-search input:active {
+    background-color: var(--bg-color) !important;
+    border-color: var(--primary-color) !important;
+}

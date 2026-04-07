@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Reporte del Asesor";
+}
+
+<div class="container mx-auto px-4 py-8 shadow-xl rounded-lg">
+    <h1 class="text-3xl font-bold text-[var(--text-primary)] mb-6">Reporte del Asesor</h1>
+
+    <!-- Dashboard del Asesor -->
+    <div class="bg-[var(--accent-color)] rounded-lg p-4 shadow-md mb-8">
+        <h3 class="text-3xl font-semibold text-[var(--text-primary)] mb-4">Resumen del Asesor</h3>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-[var(--text-primary)] text-sm">
+            <div>
+                <p class="font-medium">Total Invertido por Clientes:</p>
+                <p id="totalInvertido">$0</p>
+            </div>
+            <div>
+                <p class="font-medium">Total de Comisiones Generadas:</p>
+                <p id="comisionesGeneradas">$0</p>
+            </div>
+            <div>
+                <p class="font-medium">Ganancias Acumuladas:</p>
+                <p id="gananciasAcumuladas" class="text-[var(--positive-color)] font-semibold">$0</p>
+            </div>
+            <div>
+                <p class="font-medium">Pérdidas Acumuladas:</p>
+                <p id="perdidasAcumuladas" class="text-[var(--negative-color)] font-semibold">$0</p>
+            </div>
+            <div>
+                <p class="font-medium">Rendimiento Promedio:</p>
+                <p id="rendimientoPromedio" class="font-semibold">0%</p>
+            </div>
+            <div>
+                <p class="font-medium">Acción Más Rentable:</p>
+                <p id="accionMasRentable" class="text-[var(--positive-color)] font-semibold">-</p>
+            </div>
+            <div>
+                <p class="font-medium text-[var(--negative-color)]">Mayor pérdida en acción:</p>
+                <p id="accionMenosRentable" class="text-[var(--negative-color)] font-semibold">-</p>
+            </div>
+        </div>
+    </div>
+    <!-- Tabla dinámica -->
+    <div id="grid-table"></div>
+</div>
+
+<script>
+    const idAsesor = @Model;
+</script>
+
+@section Scripts {
+    <script src="~/js/Reportes/AsesorReporte.js" asp-append-version="true"></script>
+}

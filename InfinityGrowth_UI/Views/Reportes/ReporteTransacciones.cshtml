@@ -1,0 +1,80 @@
+@{
+    ViewData["Title"] = "Reporte de Transacciones";
+}
+
+<div class="container mx-auto px-4 py-8 shadow-xl rounded-lg">
+    <h1 class="text-4xl font-bold text-[var(--text-primary)] mb-6">Reporte de Transacciones</h1>
+
+    <!-- Sección de Activo y Tiempo -->
+    <div class="inline-flex items-center gap-4 mb-6 shadow-sm bg-[var(--accent-color)] p-4 rounded-lg">
+        <!-- Activo -->
+        <span class="text-[var(--text-primary)] font-medium">Activo</span>
+        <div class="relative w-40">
+            <select id="combo"
+                class="appearance-none block w-full px-3 py-2 pr-10 border border-[var(--accent-color)] bg-[var(--bg-color)] text-[var(--text-primary)] rounded-md text-sm 
+                focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] focus:border-[var(--primary-color)]"
+                style="background-color: var(--bg-color); color: var(--text-primary);">
+                <option value="">Todos</option>
+                <option value="op1">Apple Inc.</option>
+                <option value="op2">Microsoft Corp.</option>
+            </select>
+
+            <div class="pointer-events-none absolute inset-y-0 right-2 flex items-center">
+                <img src="\public\icons\FlechaAbajo.webp" alt="Flecha" class="w-4 h-4">
+            </div>
+        </div>
+
+        <!-- Tiempo -->
+        <span class="text-[var(--text-primary)] font-bold">Tiempo</span>
+        <div class="flex gap-2">
+            <button class="px-4 py-1 text-sm font-bold text-[var(--text-primary)] border border-gray-300 rounded-md hover:bg-[var(--hover-color)] focus:outline-none">7D</button>
+            <button class="px-4 py-1 text-sm font-bold text-[var(--text-primary)] border border-gray-300 rounded-md hover:bg-[var(--hover-color)] focus:outline-none">3M</button>
+            <button class="px-4 py-1 text-sm font-bold text-[var(--text-primary)] border border-gray-300 rounded-md hover:bg-[var(--hover-color)] focus:outline-none">General</button>
+        </div>
+    </div>
+
+    <!-- Tabla de transacciones -->
+    <div class="overflow-x-auto rounded-lg shadow-lg">
+        <table class="min-w-full divide-y divide-[var(--accent-color)] bg-[var(--bg-color)]">
+            <thead class="bg-[var(--accent-color)]">
+                <tr>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-[var(--text-primary)]">#</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-[var(--text-primary)]">Activo</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-[var(--text-primary)]">Tipo</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-[var(--text-primary)]">Fecha</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-[var(--text-primary)]">Precio Estimado</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-[var(--text-primary)]">Cantidad</th>
+                    <th class="px-6 py-3 text-left text-sm font-medium text-[var(--text-primary)]">Acreditado/Enviado</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-[var(--accent-color)] text-sm">
+                <tr class="hover:bg-[var(--hover-color)]">
+                    <td class="px-6 py-4 text-[var(--text-primary)]">1</td>
+                    <td class="px-6 py-4 text-[var(--text-primary)]">Apple Inc.</td>
+                    <td class="px-6 py-4">
+                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800">
+                            Entrada
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 text-[var(--text-primary)]">2024-01-15</td>
+                    <td class="px-6 py-4 text-[var(--text-primary)]">$222.40 AAPL</td>
+                    <td class="px-6 py-4 text-[var(--text-primary)]">5.25</td>
+                    <td class="px-6 py-4 text-[var(--text-primary)]">$1157.1</td>
+                </tr>
+                <tr class="hover:bg-[var(--hover-color)]">
+                    <td class="px-6 py-4 text-[var(--text-primary)]">2</td>
+                    <td class="px-6 py-4 text-[var(--text-primary)]">Microsoft Corp.</td>
+                    <td class="px-6 py-4">
+                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-800">
+                            Salida
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 text-[var(--text-primary)]">2024-02-02</td>
+                    <td class="px-6 py-4 text-[var(--text-primary)]">$387.20 MSFT</td>
+                    <td class="px-6 py-4 text-[var(--text-primary)]">10.00</td>
+                    <td class="px-6 py-4 text-[var(--text-primary)]">$3872</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,170 @@
+﻿@model Usuarios
+@{
+	ViewBag.Title = "Portafolio";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Scripts {
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+	<link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+	<script>
+			window.userId = @(ViewBag.UserId ?? 0);
+			window.userEmail = "@ViewBag.UserEmail";
+	</script>
+
+	<script src="~/js/Pages/Portafolio/Portafolio.js"></script>
+}
+
+<!-- Barra de Tabs -->
+<div class="w-full flex justify-center py-6 bg-[var(--secondary-color)]">
+	<div class="flex space-x-8 border-b border-gray-600">
+		<button class="tab-button px-4 pb-2 text-lg font-semibold text-white border-b-2 border-[var(--primary-color)]"
+				data-tab="portfolio">
+			Portfolio
+		</button>
+		<button class="tab-button px-4 pb-2 text-lg font-semibold text-gray-400 border-b-2 border-transparent hover:text-white hover:border-[var(--primary-color)]"
+				data-tab="wallet">
+			Wallet
+		</button>
+	</div>
+</div>
+
+<!-- SECCIÓN: Portfolio -->
+<div id="portfolio" class="tab-content">
+	<section class="flex h-screen p-6 justify-evenly gap-32 text-[var(--text-primary)]">
+		<div class="flex flex-col w-2/4 bg-[var(--accent-color)] p-6 rounded-lg shadow-md">
+			<div class="flex justify-between gap-16 pb-40">
+				<div class="w-full pt-11">
+					<!-- Total Assets -->
+					<div class="w-full flex items-center justify-between mb-2">
+						<p class="text-md">Total Assets</p>
+						<p class="text-md font-bold">$6,756.43</p>
+					</div>
+					<div class="w-full bg-gray-200 h-2 rounded-full">
+						<div class="bg-[var(--primary-color)] h-2 rounded-full" style="width: 100%;"></div>
+					</div>
+
+					<!-- Buying Power -->
+					<div class="w-full flex items-center justify-between mt-4 mb-2">
+						<p class="text-md">Buying Power</p>
+						<p class="text-md font-bold">$0.010</p>
+					</div>
+					<div class="w-full bg-gray-200 h-2 rounded-full">
+						<div class="bg-blue-600 h-2 rounded-full" style="width: 0.00015%;"></div>
+					</div>
+
+					<!-- Pending Cash -->
+					<div class="w-full flex items-center justify-between mt-4 mb-2">
+						<p class="text-md">Pending Cash</p>
+						<p class="text-md font-bold">$0.00</p>
+					</div>
+					<div class="w-full bg-gray-200 h-2 rounded-full">
+						<div class="bg-blue-600 h-2 rounded-full" style="width: 0%;"></div>
+					</div>
+
+					<!-- Pending Assets -->
+					<div class="w-full flex items-center justify-between mt-4 mb-2">
+						<p class="text-md">Pending Assets</p>
+						<p class="text-md font-bold">$0.00</p>
+					</div>
+					<div class="w-full bg-gray-200 h-2 rounded-full">
+						<div class="bg-blue-600 h-2 rounded-full" style="width: 0%;"></div>
+					</div>
+				</div>
+				<!-- Barra circular -->
+				<div class="flex flex-col items-center mt-6">
+					<div class="relative w-50 h-50">
+						<svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+							<circle cx="50" cy="50" r="40" stroke="#e5e7eb" stroke-width="10" fill="none" />
+							<circle cx="50" cy="50" r="40" stroke="#97AE4D" stroke-width="10" fill="none"
+									stroke-dasharray="251.2" stroke-dashoffset="0" stroke-linecap="round" />
+						</svg>
+						<div class="absolute inset-0 flex items-center justify-center">
+							<p class="text-xl font-bold">$6,756.44</p>
+						</div>
+					</div>
+					<p class="text-md text-gray-500 mt-2">Total Balance</p>
+				</div>
+			</div>
+
+			<!-- Inversiones -->
+			<div class="flex flex-col gap-2 mt-14">
+				<p class="text-center font-bold mb-2">Inversiones</p>
+				<div class="flex items-center">
+					<span class="w-12 text-sm">AAPL</span>
+					<div class="bg-[var(--primary-color)] h-3 rounded" style="width: 80%;"></div>
+				</div>
+				<div class="flex items-center">
+					<span class="w-12 text-sm">MSFT</span>
+					<div class="bg-[var(--primary-color)] h-3 rounded" style="width: 60%;"></div>
+				</div>
+				<div class="flex items-center">
+					<span class="w-12 text-sm">NVDA</span>
+					<div class="bg-[var(--primary-color)] h-3 rounded" style="width: 80%;"></div>
+				</div>
+				<div class="flex items-center">
+					<span class="w-12 text-sm">GOOGL</span>
+					<div class="bg-[var(--primary-color)] h-3 rounded" style="width: 30%;"></div>
+				</div>
+				<div class="flex items-center">
+					<span class="w-12 text-sm">TSLA</span>
+					<div class="bg-[var(--primary-color)] h-3 rounded" style="width: 50%;"></div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Portafolio de Acciones -->
+		<div class="bg-[var(--accent-color)] p-6 rounded-lg shadow-md w-md min-h-[400px]">
+			<h2 class="text-xl font-bold mb-4">Mi portafolio</h2>
+
+			@* Repite este bloque por cada acción que ya tenías *@
+			<div id="miPortafolio" class="flex flex-col gap-4 w-full bg-[var(--accent-color)] " data-userid="@ViewBag.UserId"></div>
+
+
+
+		</div>
+	</section>
+</div>
+
+<!-- Sección Wallet -->
+<div id="wallet" class="tab-content hidden">
+	<section class="text-white py-20 px-10 grid grid-cols-2 gap-8 items-start">
+		<!-- SALDO ACTUAL -->
+		<div class="bg-[var(--accent-color)] p-10 rounded-xl shadow-md flex flex-col justify-center items-center gap-6 w-full">
+			<h2 class="text-2xl font-bold tracking-wide text-white">Saldo actual</h2>
+			<p id="saldoActual" class="text-5xl font-extrabold text-[var(--primary-color)]">$600</p>
+
+			<!-- Formulario para agregar fondos -->
+			<div class="flex flex-col w-full items-center gap-4">
+				
+				<div class="flex flex-col items-center gap-4">
+					<div>
+						<label for="idCantidadDinero" class="text-lg">Dinero a agregar </label>
+					<input type="number" id="idCantidadDinero" placeholder="$ 100"
+						   class="px-4 py-2 rounded text-black w-32 text-center border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]">
+					<button id="btnAgregarFondos"
+							class="bg-[var(--primary-color)] text-white font-semibold px-6 py-2 rounded hover:brightness-110 transition-all">
+						Agregar Fondos
+					</button>
+					</div>
+					<div>
+						<label for="idCantidaDineroRetiro" class="text-lg">Dinero a agregar </label>
+					<input type="number" id="idCantidadRetiro" placeholder="$ 100"
+						   class="px-4 py-2 rounded text-black w-32 text-center border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]">
+
+					<button id="btnRetirarFondos"
+							class="bg-[var(--primary-color)] text-white font-semibold px-6 py-2 rounded hover:brightness-110 transition-all">
+						Retirar Fondos
+					</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- MOVIMIENTOS -->
+		<div class="w-full">
+			<div id="wallet-transactions" class="rounded-xl p-4 shadow-md"></div>
+		</div>
+	</section>
+</div>

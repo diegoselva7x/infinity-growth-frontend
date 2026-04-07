@@ -1,0 +1,126 @@
+﻿@{
+    ViewData["Title"] = "Bienvenido a InfinityGrowth";
+}
+
+<!-- Colocar scipts -->
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+}
+
+@* <h1 class="text-4xl font-bold text-left pb-8">Bienvenido a InfinityGrowth</h1>
+<section class="grid grid-cols-1 grid-rows-5 gap-7">
+    <div class="col-span-2 row-span-2 rounded-2xl p-8 bg-[var(--secondary-color)]">
+        <p class="text-lg text-[var(--text-primary)]">La plataforma de crecimiento personal y profesional que necesitas
+            para alcanzar tus metas.
+        </p>
+    </div>
+
+    <div class="col-span-3 row-span-5 col-start-3 rounded-2xl p-8 bg-[var(--secondary-color)]">
+        <article class="flex gap-2 items-center mb-4">
+            <img src="/public/icons/lineUp-icon.svg" alt="Icono de línea ascendente" class="w-8">
+            <h3 class="text-2xl text-left font-bold text-[var(--text-primary)]">Resumen de mercado</h3>
+        </article>
+        <div class="grid grid-cols-1 grid-rows-1 gap-4">
+            <img src="/public/img/indexImage.webp" alt="imagen de bienvenida" class="w-3xl rounded-xl">
+            @* <canvas id="grafico"></canvas>
+            <div class="flex justify-end">
+                <a asp-area="" asp-controller=" Registrarse" asp-action="Index" class="btn-primary max-w-80">Buscar un
+                    Asesor</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-span-2 row-span-2 row-start-3 rounded-2xl p-8 bg-[var(--primary-color)]">
+        3</div>
+
+    <div class="row-start-5 rounded-2xl w-md p-8 bg-[var(--primary-color)]">4</div>
+
+    <div class="row-start-5 rounded-2xl w-md p-8 bg-[var(--primary-color)]">5</div>
+
+</section> *@
+
+<section class="text-[var(--text-primary)] flex flex-col gap-8 p-8 rounded-2xl">
+    <!-- Hero Section -->
+    <section class="hero bg-cover bg-center rounded-2xl" style="background-image: url('/public/img/indexImage.webp');">
+        <div class="text-center text-white w-full bg-black bg-opacity-50 p-32 rounded-2xl shadow-lg">
+            <h1 class="text-5xl font-extrabold leading-tight mb-6">Bienvenido a Infinity Growth</h1>
+            <p class="text-xl mb-10 max-w-3xl mx-auto">Impulsa tu portafolio al siguiente nivel con nuestras soluciones
+                innovadoras, diseñadas para brindarte el soporte que necesitas para alcanzar el éxito.</p>
+            <a asp-controller="Home" asp-action="FormularioInteres"
+                class="btn-primary hover:scale-105 p-16 transition">Comienza Ahora</a>
+        </div>
+    </section>
+
+
+    <!-- Features Section -->
+    <section class="py-20 container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-6 bg-[var(--secondary-color)] shadow-lg rounded-lg text-center">
+            <img src="/public/icons/feature1.svg" alt="Feature 1" class="mx-auto mb-4">
+            <h3 class="text-xl font-bold mb-2">Todas las soluciones en una plataforma</h3>
+            <p>Concéntrate en tus inversiones; nuestros asesores y herramientas están para ayudarte.</p>
+        </div>
+        <div class="p-6 bg-[var(--secondary-color)] shadow-lg rounded-lg text-center">
+            <img src="/public/icons/feature2.svg" alt="Feature 2" class="mx-auto mb-4">
+            <h3 class="text-xl font-bold mb-2">Mercado en tiempo real</h3>
+            <p>Consulta los movimientos del mercado en tiempo real dentro de nuestra plataforma.</p>
+        </div>
+        <div class="p-6 bg-[var(--secondary-color)] shadow-lg rounded-lg text-center">
+            <img src="/public/icons/feature3.svg" alt="Feature 3" class="mx-auto mb-4">
+            <h3 class="text-xl font-bold mb-2">Retira cuando quieras</h3>
+            <p>Retira tus ganancias cuando lo desees gracias a nuestra integración con PayPal.</p>
+        </div>
+    </section>
+
+    <!-- Market Summary Section -->
+    <section class="container mx-auto p-8 bg-[var(--accent-color)] rounded-2xl">
+        <article class="flex gap-2 items-center mb-4">
+            <img src="/public/icons/lineUp-icon.svg" alt="Icono de línea ascendente" class="w-8">
+            <h3 class="text-2xl font-bold">Resumen de mercado</h3>
+        </article>
+        <div class="flex flex-col items-center">
+            <img src="/public/img/indexImage.webp" alt="imagen de bienvenida" class="rounded-xl w-full max-w-2xl">
+            <a href="/register" class="mt-6 bg-[var(--primary-color)] text-white px-6 py-3 rounded-lg">Buscar un
+                Asesor</a>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-[var(--secondary-color)] text-center">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-white mb-8">Lo que dicen nuestros clientes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div
+                    class="p-6 bg-[var(--accent-color)] shadow-lg rounded-lg transition transform hover:scale-105 hover:shadow-xl duration-300">
+                    <p class="mb-4 text-lg text-[var(--text-primary)]">"Desde que empecé a usar Infinity Growth, he
+                        visto un cambio impresionante en la manera en que gestiono mis inversiones. ¡Es la herramienta
+                        que necesitaba!"</p>
+                    <p class="font-bold text-[var(--primary-color)]">- María González, Inversora</p>
+                </div>
+                <div
+                    class="p-6 bg-[var(--accent-color)] shadow-lg rounded-lg transition transform hover:scale-105 hover:shadow-xl duration-300">
+                    <p class="mb-4 text-lg text-[var(--text-primary)]">"Infinity Growth me ha permitido optimizar mis
+                        decisiones financieras de manera eficiente. Los asesores son increíblemente profesionales y
+                        siempre están disponibles cuando los necesito."</p>
+                    <p class="font-bold text-[var(--primary-color)]">- Juan Pérez, Empresario</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Call to Action Section -->
+    <section
+        class="py-20 bg-gradient-to-r from-[var(--primary-color)] to-[var(--hover-color)] text-[var(--text-primary)] text-center">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-white mb-4">¿Listo para comenzar?</h2>
+            <p class="text-xl text-white mb-8">Únete a Infinity Growth y lleva tu portafolio a nuevas alturas con
+                nuestras soluciones innovadoras.</p>
+            <a asp-controller="Home" asp-action="FormularioInteres"
+                class="bg-[var(--primary-color)] text-white px-8 py-4 rounded-lg text-lg font-semibold transition transform hover:scale-105 hover:shadow-lg duration-300">
+                Regístrate Ahora
+            </a>
+        </div>
+    </section>
+
+</section>

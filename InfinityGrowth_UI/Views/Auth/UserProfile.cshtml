@@ -1,0 +1,72 @@
+@model InfinityGrowth_UI.Models.UserProfileModel
+
+@{
+    ViewBag.Title = "Perfil de Usuario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="flex items-center justify-evenly gap-10 p-10 bg-[var(--background)] text-[var(--text-primary)]">
+    <div class="flex flex-col justify-center mb-6">
+        @if (!string.IsNullOrEmpty(Model.FotoBase64))
+        {
+            <img src="@Model.FotoBase64" alt="Foto de perfil"
+                class="w-80 h-80 rounded-full object-cover shadow-xl border-2 border-[var(--primary-color)]" />
+        }
+        else
+        {
+            <img src="~/public/icons/profile-icon.svg" alt="Foto de perfil no disponible"
+                class="w-80 h-80 rounded-full object-cover shadow-xl border-2 border-[var(--primary-color)]" />
+        }
+        <div class="flex flex-col items-center mt-4">
+            <h1 class="text-2xl font-bold text-center">@Model.Nombre @Model.Apellido1 @Model.Apellido2</h1>
+            <p class="text-md text-balance">@Model.Correo</p>
+            <span class="text-md mt-4 font-medium me-2 px-4 py-1.5 rounded-full bg-[var(--primary-color)] text-[var(--bg-color)]">@Model.TipoUsuario</span>
+        </div>
+    </div>
+
+    <div class="max-w-2xl p-6 bg-[var(--secondary-color)] rounded-2xl">
+        <h2>Perfil de Usuario</h2>
+
+        <p class="text-md text-balance mb-10">
+            Aquí puedes ver tu información personal. Si necesitas cambiar tu contraseña, puedes hacerlo
+            a través del botón correspondiente.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+                <label class="block text-sm">Correo electrónico</label>
+                <input type="text" value="@Model.Correo" readonly />
+            </div>
+
+            <div>
+                <label class="block text-sm">Nombre</label>
+                <input type="text" value="@Model.Nombre" readonly />
+            </div>
+
+            <div>
+                <label class="block text-sm">Primer Apellido</label>
+                <input type="text" value="@Model.Apellido1" readonly />
+            </div>
+
+            <div>
+                <label class="block text-sm">Segundo Apellido</label>
+                <input type="text" value="@Model.Apellido2" readonly />
+            </div>
+
+            <div>
+                <label class="block text-sm">Tipo de Usuario</label>
+                <input type="text" value="@Model.TipoUsuario" readonly />
+            </div>
+
+            <div>
+                <label class="block text-sm">Fecha de Nacimiento</label>
+                <input type="text" value="@Model.FechaNacimiento.ToString("dd/MM/yyyy")" readonly />
+            </div>
+        </div>
+
+        <div class="text-end pt-4">
+            <a asp-controller="Auth" asp-action="CambiarContrasena" class="btn-primary">
+                Cambiar Contraseña
+            </a>
+        </div>
+    </div>
+</section>

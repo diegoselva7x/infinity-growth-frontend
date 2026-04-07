@@ -1,0 +1,161 @@
+﻿@{
+    ViewData["Title"] = "Acciones";
+}
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        const userId = @ViewBag.UserId;
+    </script>
+
+    <script src="~/js/Pages/Inversiones/Inversiones.js"></script>
+}
+
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold text-[var(--text-primary)] mb-6">Acciones</h1>
+
+    <!-- Tarjetas -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Apple -->
+        <div class="stock-card bg-[var(--accent-color)] p-4 rounded-xl shadow-md flex items-center justify-between cursor-pointer" data-symbol="AAPL">
+            <div class="flex items-center gap-4">
+                <img src="\public\icons\AAPL.svg" alt="Apple" class="w-10 h-10" />
+                <div>
+                    <p class="text-[var(--text-primary)] font-semibold text-lg">AAPL</p>
+                    <p class="text-sm text-[var(--text-primary)]">$187.32</p>
+                </div>
+            </div>
+            <p class="text-[var(--positive-color)] font-semibold">+5.3%</p>
+        </div>
+
+        <!-- Google -->
+        <div class="stock-card bg-[var(--accent-color)] p-4 rounded-xl shadow-md flex items-center justify-between cursor-pointer" data-symbol="GOOGL">
+            <div class="flex items-center gap-4">
+                <img src="\public\icons\GOOGL.svg" alt="Google" class="w-10 h-10" />
+                <div>
+                    <p class="text-[var(--text-primary)] font-semibold text-lg">GOOGL</p>
+                    <p class="text-sm text-[var(--text-primary)]">$139.15</p>
+                </div>
+            </div>
+            <p class="text-[var(--positive-color)] font-semibold">+3.2%</p>
+        </div>
+
+        <!-- Microsoft -->
+        <div class="stock-card bg-[var(--accent-color)] p-4 rounded-xl shadow-md flex items-center justify-between cursor-pointer" data-symbol="MSFT">
+            <div class="flex items-center gap-4">
+                <img src="\public\icons\MSFT.svg" alt="Microsoft" class="w-10 h-10" />
+                <div>
+                    <p class="text-[var(--text-primary)] font-semibold text-lg">MSFT</p>
+                    <p class="text-sm text-[var(--text-primary)]">$412.10</p>
+                </div>
+            </div>
+            <p class="text-[var(--positive-color)] font-semibold">+2.1%</p>
+        </div>
+
+        <!-- Nvidia -->
+        <div class="stock-card bg-[var(--accent-color)] p-4 rounded-xl shadow-md flex items-center justify-between cursor-pointer" data-symbol="NVDA">
+            <div class="flex items-center gap-4">
+                <img src="\public\icons\NVDA.svg" alt="Nvidia" class="w-10 h-10" />
+                <div>
+                    <p class="text-[var(--text-primary)] font-semibold text-lg">NVDA</p>
+                    <p class="text-sm text-[var(--text-primary)]">$890.45</p>
+                </div>
+            </div>
+            <p class="text-[var(--positive-color)] font-semibold">+7.8%</p>
+        </div>
+
+        <!-- Tesla -->
+        <div class="stock-card bg-[var(--accent-color)] p-4 rounded-xl shadow-md flex items-center justify-between cursor-pointer" data-symbol="TSLA">
+            <div class="flex items-center gap-4">
+                <img src="\public\icons\TSLA.svg" alt="Tesla" class="w-10 h-10" />
+                <div>
+                    <p class="text-[var(--text-primary)] font-semibold text-lg">TSLA</p>
+                    <p class="text-sm text-[var(--text-primary)]">$183.25</p>
+                </div>
+            </div>
+            <p class="text-[var(--negative-color)] font-semibold">−2.6%</p>
+        </div>
+
+        <!-- Netflix -->
+        <div class="stock-card bg-[var(--accent-color)] p-4 rounded-xl shadow-md flex items-center justify-between cursor-pointer" data-symbol="NFLX">
+            <div class="flex items-center gap-4">
+                <img src="\public\icons\NFLX.svg" alt="Netflix" class="w-10 h-10" />
+                <div>
+                    <p class="text-[var(--text-primary)] font-semibold text-lg">NFLX</p>
+                    <p class="text-sm text-[var(--text-primary)]">$183.25</p>
+                </div>
+            </div>
+            <p class="text-[var(--negative-color)] font-semibold">−3.7%</p>
+        </div>
+
+        <!-- Amazon -->
+        <div class="stock-card bg-[var(--accent-color)] p-4 rounded-xl shadow-md flex items-center justify-between cursor-pointer" data-symbol="AMZN">
+            <div class="flex items-center gap-4">
+                <img src="\public\icons\AMZN.svg" alt="Amazon" class="w-10 h-10" />
+                <div>
+                    <p class="text-[var(--text-primary)] font-semibold text-lg">AMZN</p>
+                    <p class="text-sm text-[var(--text-primary)]">$183.25</p>
+                </div>
+            </div>
+            <p class="text-[var(--negative-color)] font-semibold">−3.7%</p>
+        </div>
+
+        <!-- Pepsi -->
+        <div class="stock-card bg-[var(--accent-color)] p-4 rounded-xl shadow-md flex items-center justify-between cursor-pointer" data-symbol="PEP">
+            <div class="flex items-center gap-4">
+                <img src="\public\icons\PEP.svg" alt="Pepsi" class="w-10 h-10" />
+                <div>
+                    <p class="text-[var(--text-primary)] font-semibold text-lg">PEP</p>
+                    <p class="text-sm text-[var(--text-primary)]">$183.25</p>
+                </div>
+            </div>
+            <p class="text-[var(--negative-color)] font-semibold">−3.7%</p>
+        </div>
+    </div>
+
+    <!-- Gráfico y resumen -->
+    <div class="bg-[var(--accent-color)] p-6 rounded-xl shadow-md mt-14">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Gráfico -->
+            <div>
+                <h2 class="text-xl font-semibold text-[var(--text-primary)] mb-4">Comprar acciones</h2>
+                <p class="text-[var(--text-primary)] text-lg font-medium mb-1" id="nombreAccion">Apple Inc. - Common Stock</p>
+                <p class="text-2xl font-bold text-[var(--text-primary)] mb-2" id="precioActual">$187.32</p>
+                <p class="font-semibold" id="variacion" style="color: var(--positive-color)">
+                    +$155.22 (+85%) Precio al cierre del mercado
+                </p>
+                <p class="text-[var(--positive-color)]">+$166.63 (+89%) Postmercado</p>
+
+                <div class="w-full">
+                    <canvas id="graficoAccion" style="width: 100%; height: 400px;"></canvas>
+                </div>
+
+                <!-- Botones de rango -->
+                <div class="flex gap-4 mt-7">
+                    <button class="rango-btn bg-[var(--bg-color)] rounded text-[var(--text-primary)] text-sm font-medium px-2 py-1" data-range="1day">1D</button>
+                    <button class="rango-btn text-[var(--text-primary)] text-sm font-medium px-2 py-1" data-range="7D">7D</button>
+                    <button class="rango-btn text-[var(--text-primary)] text-sm font-medium px-2 py-1" data-range="1M">1M</button>
+                </div>
+            </div>
+
+            <!-- Compra rápida -->
+            <div class="bg-[var(--bg-color)] rounded-lg p-4 shadow">
+                <div class="text-sm text-[var(--text-primary)] space-y-2">
+                    <p>Cantidad:</p>
+                    <input id="cantidadInput" type="number" step="0.01" min="0.01" value="1" class="p-2 border rounded w-full" />
+                    <p>Precio estimado: <span class="font-medium" id="precioEstimado">$931.60</span></p>
+                    <p>Monto estimado: <span class="font-medium" id="montoEstimado">$931.60</span></p>
+                    <p>Comisión: <span class="font-medium" id="comision">$0.10</span></p>
+                    <p>Total: <span class="font-medium" id="total">$931.70</span></p>
+                </div>
+
+                <button id="btnComprar" class="w-full bg-[var(--primary-color)] text-black font-semibold py-2 rounded mt-6 hover:brightness-110 transition">
+                    Continuar
+                </button>
+
+                <div id="recomendacion" class="mt-4 text-lg font-black text-[var(--primary-color)]"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,101 @@
+@model InfinityGrowth_UI.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Recuperar Contraseña";
+    Layout = "~/Views/Shared/_Layout_Login.cshtml";
+}
+
+<section class="grid md:grid-cols-2 gap-10 p-10 bg-[var(--background)] text-[var(--text-primary)]">
+    <div class="bg-[var(--secondary-color)] p-8 rounded-2xl space-y-6 col-span-1 flex flex-col">
+        <h2 class="text-3xl font-semibold text-center mb-0">Cambiar Contraseña</h2>
+        <p class="text-md text-balance text-center mb-10">
+            Para restablecer tu contraseña, ingresa tu correo electrónico. Te enviaremos un <strong>código de
+                verificación (OTP)</strong>
+            para continuar con el proceso.
+        </p>
+        <!-- CORREO -->
+        <div id="emailSection" class="space-y-4">
+            <div>
+                <label for="correo" class="block text-sm font-medium">Correo Electrónico</label>
+                <input type="email" id="correo" class="input" placeholder="ejemplo@correo.com"
+                    aria-label="Correo Electrónico" autocomplete="email">
+            </div>
+            <button id="btnEnviarCorreo" class="btn-primary w-96 mt-4">
+                Enviar Código OTP
+            </button>
+        </div>
+
+        <div id="otpSection" class="mt-12 hidden">
+            <label for="otp" class="block text-sm font-medium">Código OTP</label>
+            <input type="text" id="otp" class="w-full p-2 border rounded-md" placeholder="Ingresa el código OTP">
+
+            <button id="btnValidarOTP" class="btn-secondary w-96 mt-4">
+                Validar OTP
+            </button>
+        </div>
+
+        <!-- NUEVA CONTRASEÑA -->
+        <div id="passwordSection" class="hidden mt-12">
+            <!-- Formulario -->
+            <div class="space-y-4 w-full">
+                <div>
+                    <label for="newPassword" class="block text-sm font-medium">Nueva Contraseña</label>
+                    <input type="password" id="newPassword" class="input" placeholder="••••••••"
+                        aria-label="Nueva Contraseña" autocomplete="new-password">
+                </div>
+                <div>
+                    <label for="confirmPassword" class="block text-sm font-medium">Confirmar Contraseña</label>
+                    <input type="password" id="confirmPassword" class="input" placeholder="••••••••"
+                        aria-label="Confirmar Contraseña" autocomplete="new-password">
+                </div>
+                <button id="btnCambiarPassword" class="btn-primary w-96 mt-4">
+                    Cambiar Contraseña
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Panel de requisitos -->
+    <div class="bg-[var(--secondary-color)] p-8 rounded-2xl col-span-1 fle flex-colx gap-8">
+        <h3 class="text-4xl font-semibold text-center font-teko mb-0">Requisitos de la contraseña</h3>
+        <p class="text-md text-balance text-center mb-10">
+            Asegúrate de que tu nueva contraseña cumpla con los siguientes requisitos:
+        </p>
+        <div class="flex gap-8 items-center justify-center">
+            <ul id="passwordRequirements" class="space-y-2 text-smlist-none pl-0 text-start">
+                <li data-rule="length" class="flex items-center gap-2"><span class="icon">⬛</span>Mínimo 8 caracteres
+                </li>
+                <li data-rule="uppercase" class="flex items-center gap-2"><span class="icon">⬛</span>Al menos una letra
+                    mayúscula</li>
+                <li data-rule="lowercase" class="flex items-center gap-2"><span class="icon">⬛</span>Al menos una letra
+                    minúscula</li>
+                <li data-rule="number" class="flex items-center gap-2"><span class="icon">⬛</span>Al menos un número
+                </li>
+                <li data-rule="special" class="flex items-center gap-2"><span class="icon">⬛</span>Al menos un carácter
+                    especial (!#$%^&*)</li>
+            </ul>
+            <img src="~/public/img/change-password.jpg" alt="Imagen de cambio de contraseña" width="300px" height="auto"
+                class="rounded-xl">
+
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/Pages/Auth/CambiarContrasena.js"></script>
+
+    <script>
+        @if (TempData["ShowPasswordAlert"] != null)
+            {
+                <text>
+                    Swal.fire({
+                        icon: 'info',
+                    title: 'Atención',
+                    text: '@Html.Raw(TempData["ShowPasswordAlert"])',
+                    confirmButtonText: 'Cambiar Contraseña',
+                            });
+                </text>
+        }
+    </script>
+}

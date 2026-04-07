@@ -1,0 +1,37 @@
+﻿<section class="flex items-center justify-center text-[var(--text-primary)]">
+    <div class="shadow-lg rounded-lg p-8 w-1/3 max-w-sm">
+        <form method="post" action="/Admin/GuardarComisiones" class="space-y-6">
+            <div>
+                <h2 class="text-3xl font-bold mb-6 text-center">Ajuste de Comisiones</h2>
+                <label for="comisionPlataforma" class="block text-sm font-medium">Comisión de Plataforma (%)</label>
+                <input type="number" id="comisionPlataforma" name="comisionPlataforma" step="0.01" min="0" class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-gray-100" placeholder="Ejemplo: 5.00">
+            </div>
+
+            <div>
+                <label for="comisionGanancias" class="block text-sm font-medium">Comisión por Ganancias de Cliente (%)</label>
+                <input type="number" id="comisionGanancias" name="comisionGanancias" step="0.01" min="0" class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-gray-100" placeholder="Ejemplo: 10.00">
+            </div>
+
+            <div>
+                <label for="comisionPerdidas" class="block text-sm font-medium">Comisión por Pérdidas de Cliente (%)</label>
+                <input type="number" id="comisionPerdidas" name="comisionPerdidas" step="0.01" min="0" class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-gray-100" placeholder="Ejemplo: 2.50">
+            </div>
+
+            <div>
+                <label for="comisionRetiros" class="block text-sm font-medium">Comisión por Retiros (%)</label>
+                <input type="number" id="comisionRetiros" name="comisionRetiros" step="0.01" min="0" class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-gray-100" placeholder="Ejemplo: 1.00">
+            </div>
+
+            <div>
+                <label for="comisionTransacciones" class="block text-sm font-medium">Comisión por Transacciones (%)</label>
+                <input type="number" id="comisionTransacciones" name="comisionTransacciones" step="0.01" min="0" class="mt-1 block w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-gray-100" placeholder="Ejemplo: 0.50">
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn-primary px-6 py-2 rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    Guardar Cambios
+                </button>
+            </div>
+        </form>
+    </div>
+</section>

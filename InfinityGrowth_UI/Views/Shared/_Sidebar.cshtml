@@ -1,0 +1,65 @@
+﻿@using System.Security.Claims
+@{
+    var tipoUsuario = User.FindFirst("TipoUsuario")?.Value;
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+}
+
+@{
+    var iconHome = @"
+<svg class=""text-[var(--text-primary)]"" xmlns=""http://www.w3.org/2000/svg"" width=""24"" height=""24"" viewBox=""0 0 24 24"">
+  <path fill=""currentColor"" d=""M4 19v-9q0-.475.213-.9t.587-.7l6-4.5q.525-.4 1.2-.4t1.2.4l6 4.5q.375.275.588.7T20 10v9q0 .825-.588 1.413T18 21h-3q-.425 0-.712-.288T14 20v-5q0-.425-.288-.712T13 14h-2q-.425 0-.712.288T10 15v5q0 .425-.288.713T9 21H6q-.825 0-1.412-.587T4 19""/>
+</svg>";
+var commisionIcon = @"<svg class=""text-[var(--text-primary)]"" xmlns=""http://www.w3.org/2000/svg"" width=""24"" height=""24"" viewBox=""0 0 256 256"">
+    <path fill=""currentColor""
+    d=""M128.09 57.38a36 36 0 0 1 55.17-27.82a4 4 0 0 1-.56 7A52.06 52.06 0 0 0 152 84c0 1.17 0 2.34.12 3.49a4 4 0 0 1-6 3.76a36 36 0 0 1-18.03-33.87M240 160.61a24.47 24.47 0 0 1-13.6 22l-.44.2l-38.83 16.54a7 7 0 0 1-1.19.4l-64 16a8 8 0 0 1-1.94.25H16a16 16 0 0 1-16-16v-40a16 16 0 0 1 16-16h28.69l22.62-22.63A31.82 31.82 0 0 1 89.94 112H140a28 28 0 0 1 27.25 34.45l41.84-9.62A24.61 24.61 0 0 1 240 160.61m-16 0a8.61 8.61 0 0 0-10.87-8.3l-.31.08l-67 15.41a8.3 8.3 0 0 1-1.79.2H112a8 8 0 0 1 0-16h28a12 12 0 0 0 0-24H89.94a15.86 15.86 0 0 0-11.31 4.69L56 155.31V200h63l62.43-15.61l38-16.18a8.56 8.56 0 0 0 4.57-7.6M168 84a36 36 0 1 0 36-36a36 36 0 0 0-36 36""/>
+</svg>";
+}
+
+<aside class="fixed left-0 z-10 w-72 bg-[var(--bg-color2)] border-r border-[var(--accent-color)] text-[var(--text-primary)] p-6 min-h-screen">
+    <a asp-area="" asp-controller="Home" asp-action="Index" class="pt-2 inline-block">
+        <img src="~/public/img/logo-png-dark.svg" id="primary-logo-sideBar" alt="Logo InfinityGrowth" height="auto" width="230px" />
+    </a>
+    <nav class="flex flex-col mt-14 gap-2">
+        <a asp-controller="Inversiones" asp-action="Inversiones"
+            class="sidebar-link @(currentController == "Inversiones" && currentAction == "Inversiones" ? "bg-[var(--accent-color)] border-l-4 border-[var(--primary-color)]" : "")">     
+            @Html.Raw(iconHome)
+            <span>Inicio</span>
+        </a>
+
+        @if (tipoUsuario == "1") // Admin
+        {
+            <a asp-controller="Admin" asp-action="Comisiones"
+                class="sidebar-link @(currentController == "Admin" && currentAction == "Comisiones" ? "bg-[var(--accent-color)] border-l-4 border-[var(--primary-color)]" : "")">
+                @Html.Raw(commisionIcon)
+                <span>Comisiones</span>
+            </a>
+            <a asp-controller="Admin" asp-action="GestionUsuarios"
+               class="sidebar-link @(currentController == "Admin" && currentAction == "GestionUsuarios" ? "bg-[var(--accent-color)] border-l-4 border-[var(--primary-color)]" : "")">
+                Gestión de Usuarios
+            </a>
+        }
+        else if (tipoUsuario == "2") // Asesor / Empleado
+        {
+            <a asp-controller="Asesor" asp-action="RegistroCliente"
+               class="sidebar-link @(currentController == "Asesor" && currentAction == "RegistroCliente" ? "bg-[var(--accent-color)] border-l-4 border-[var(--primary-color)]" : "")">
+                Registro de Cliente
+            </a>
+            <a asp-controller="Reportes" asp-action="ReporteCliente"
+               class="sidebar-link @(currentController == "Reportes" && currentAction == "ReporteCliente" ? "bg-[var(--accent-color)] border-l-4 border-[var(--primary-color)]" : "")">
+                Reporte Inversiones
+            </a>
+            <a asp-controller="Reportes" asp-action="ReporteTransacciones"
+               class="sidebar-link @(currentController == "Reportes" && currentAction == "ReporteTransacciones" ? "bg-[var(--accent-color)] border-l-4 border-[var(--primary-color)]" : "")">
+                Reporte Transacciones
+            </a>
+        }
+        else if (tipoUsuario == "3") // Cliente
+        {
+            <a asp-controller="Cliente" asp-action="Portafolio"
+               class="sidebar-link @(currentController == "Cliente" && currentAction == "Portafolio" ? "bg-[var(--accent-color)] border-l-4 border-[var(--primary-color)]" : "")">
+                Mi Portafolio
+            </a>
+        }
+    </nav>
+</aside>

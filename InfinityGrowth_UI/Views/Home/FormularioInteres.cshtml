@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "Formulario de Interés";
+}
+
+<section class="grid md:grid-cols-3 gap-10 p-10 text-[var(--text-primary)]">
+    <!-- Formulario -->
+    <div class="bg-[var(--secondary-color)] rounded-2xl p-8 md:col-span-2 flex flex-col">
+        <h2 class="text-3xl font-bold text-left text-[var(--primary-color)] mb-2">Formulario de Interés</h2>
+        <p class="text-left text-[var(--text-primary)] mb-6">¿Listo para dar el primer paso en tu camino como inversionista? Completa el formulario y te contactaremos.</p>
+        
+        <form method="post" action="/Home/SubmitFormularioInteres" class="space-y-5 mt-5">
+            <div class="grid md:grid-cols-2 gap-4">
+                <div>
+                    <label for="correo" class="block text-sm font-semibold">Correo electrónico:</label>
+                    <input type="email" id="correo" name="correo" required/>
+                </div>
+                <div>
+                    <label for="nombre" class="block text-sm font-semibold">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required/>
+                </div>
+                <div>
+                    <label for="apellidos" class="block text-sm font-semibold">Primer Apellido:</label>
+                    <input type="text" id="apellidos" name="apellidos" required/>
+                </div>
+                <div>
+                    <label for="apellidos" class="block text-sm font-semibold">Segundo Apellido:</label>
+                    <input type="text" id="apellidos" name="apellidos" required/>
+                </div>
+            </div>
+
+            <div>
+                <label for="mensaje" class="block text-sm font-semibold">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="4"
+                          placeholder="Estoy interesado en conocer más sobre las oportunidades de inversión..."></textarea>
+            </div>
+
+            <div class="text-right">
+                <button type="submit" 
+                        class="btn-primary w-xs">
+                    Enviar
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Info -->
+    <div class="bg-[var(--secondary-color)] rounded-2xl p-6 flex flex-col">
+        <h3 class="text-3xl font-bold font-teko text-[var(--primary-color)] mb-5">¿Por qué elegirnos?</h3>
+
+        <div class="space-y-8 leading-relaxed">
+            <div>
+                <p class="font-bold text-md text-[var(--primary-color)]">📊 Todas las soluciones en una sola plataforma</p>
+                <p>Concéntrate en tus inversiones; nuestros asesores y herramientas están para ayudarte a tomar decisiones informadas.</p>
+            </div>
+
+            <div>
+                <p class="font-bold text-md text-[var(--primary-color)]">📈 Mercado en tiempo real</p>
+                <p>Accede a gráficos actualizados, precios y noticias en vivo para actuar con precisión en cada movimiento del mercado.</p>
+            </div>
+
+            <div>
+                <p class="font-bold text-md text-[var(--primary-color)]">💸 Retira cuando quieras</p>
+                <p>Retira tus ganancias de forma rápida y segura gracias a nuestra integración con PayPal.</p>
+            </div>
+
+            <div>
+                <p class="font-bold text-md text-[var(--primary-color)]">📉 Resumen del mercado</p>
+                <p>Consulta un resumen claro del comportamiento de tus inversiones y sigue el pulso de la economía global desde un solo lugar.</p>
+            </div>
+        </div>
+    </div>
+</section>

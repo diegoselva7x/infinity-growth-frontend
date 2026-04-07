@@ -1,0 +1,97 @@
+﻿@{
+    ViewData["Title"] = "Gestión de Usuarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mx-auto p-8 bg-[var(--bg-color)] text-[var(--text-primary)] dark shadow-lg rounded-lg">
+    <h2 class="text-3xl font-bold mb-6 text-center">Gestión de Usuarios</h2>
+
+
+    <form method="get" action="/Admin/FiltrarUsuarios" class="space-y-4 mb-6  ">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4  ">
+            <div>
+                <label for="cedula" class="block text-sm font-medium text-gray-700">Cédula</label>
+                <input type="text" id="cedula" name="cedula"
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Ejemplo: 1234567890">
+            </div>
+            <div>
+                <label for="id" class="block text-sm font-medium text-gray-700">ID</label>
+                <input type="text" id="id" name="id"
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Ejemplo: 001">
+            </div>
+            <div>
+                <label for="nombre" class="block text-sm font-medium text-gray-700">Nombre</label>
+                <input type="text" id="nombre" name="nombre"
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Ejemplo: Juan">
+            </div>
+            <div>
+                <label for="apellidos" class="block text-sm font-medium text-gray-700">Apellidos</label>
+                <input type="text" id="apellidos" name="apellidos"
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Ejemplo: Pérez">
+            </div>
+            <div>
+                <label for="tipoUsuario" class="block text-sm font-medium text-gray-700">Tipo de Usuario</label>
+                <select id="tipoUsuario" name="tipoUsuario"
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                    <option value="">Todos</option>
+                    <option value="Admin">Admin</option>
+                    <option value="Cliente">Cliente</option>
+                    <option value="Asesor">Asesor</option>
+                </select>
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="submit"
+                class="btn-primary px-6 py-2 rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                Filtrar
+            </button>
+        </div>
+    </form>
+
+
+    <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-[var(--accent-color)] bg-[var(--bg-color)] text-sm">
+            <thead class="bg-[var(--accent-color)]">
+                <tr class="hover:bg-[var(--hover-color)]">
+                    <td class="px-6 py-3 text-left font-medium text-[var(--text-primary)]">Cédula</th>
+                    <td class="px-6 py-3 text-left font-medium text-[var(--text-primary)]">ID</th>
+                    <td class="px-6 py-3 text-left font-medium text-[var(--text-primary)]">Nombre</th>
+                    <td class="px-6 py-3 text-left font-medium text-[var(--text-primary)]">Apellidos</th>
+                    <td class="px-6 py-3 text-left font-medium text-[var(--text-primary)]">Tipo de Usuario</th>
+                    <td class="px-6 py-3 text-left font-medium text-[var(--text-primary)]">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-[var(--accent-color)]">
+
+                <tr class="hover:bg-[var(--hover-color)]">
+                    <td class="px-6 py-4 text-[var(--text-primary)]">1234567890</td>
+                    <td class="px-6 py-4 text-[var(--text-primary)]">001</td>
+                    <td class="px-6 py-4 text-[var(--text-primary)]">Juan</td>
+                    <td class="px-6 py-4 text-[var(--text-primary)]">Pérez</td>
+                    <td class="px-6 py-4 text-[var(--text-primary)]">Cliente</td>
+                    <td class="px-6 py-4 text-[var(--text-primary)]">
+                        <a href="/Admin/EditarUsuario/001" class="text-blue-600 hover:underline">Editar</a> |
+                        <a href="/Admin/EliminarUsuario/001" class="text-red-600 hover:underline">Bloquear</a>
+                    </td>
+                </tr>
+
+                <tr class="hover:bg-[var(--hover-color)]">
+                    <td class="px-6 py-4 text-[var(--text-primary)]">1111111111</td>
+                    <td class="px-6 py-4 text-[var(--text-primary)]">002</td>
+                    <td class="px-6 py-4 text-[var(--text-primary)]">Andy</td>
+                    <td class="px-6 py-4 text-[var(--text-primary)]">Pérez</td>
+                    <td class="px-6 py-4 text-[var(--text-primary)]">Asesor</td>
+                    <td class="px-6 py-4 text-[var(--text-primary)]">
+                        <a href="/Admin/EditarUsuario/001" class="text-blue-600 hover:underline">Editar</a> |
+                        <a href="/Admin/EliminarUsuario/001" class="text-red-600 hover:underline">Bloquear</a>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>

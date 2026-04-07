@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+
+<body class="bg-[var(--bg-color)] p-5">
+    <header class="flex justify-end items-center p-8">
+        <a asp-area="" asp-controller="Home" asp-action="Index" class="hidden">
+            <img src="~/public/img/logo-png-dark.png" id="primary-logo" alt="Logo InfinityGrowth dark" height="auto"
+                width="250px" />
+        </a>
+        <div class="flex items-center gap-5">
+            <button id="theme-toggle-btn" class="p-2 hover:scale-110 hover:cursor-pointer transition">
+                <div id="dark-icon-container" class="theme-toggle-icon transition hidden">
+                    <img src="~/public/icons/dark-mode.svg" alt="icono modo oscuro">
+                </div>
+                <div id="light-icon-container" class="theme-toggle-icon transition hidden">
+                    <img src="~/public/icons/light-mode.svg" alt="icono modo claro">
+                </div>
+            </button>
+        </div>
+    </header>
+    <div class="flex flex-col items-center justify-center h-full w-full text-center">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="divider py-6 px-4 md:px-8">
+        <div class="text-center text-sm text-gray-500 mt-4">&copy; 2025 - Infinity Growth. Todos los derechos
+            reservados.</div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/theme-toggle.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

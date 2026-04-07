@@ -1,0 +1,105 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Authentication
+@using System.Security.Claims
+
+<!DOCTYPE html>
+<html lang="es">
+
+    <script>
+        (function () {
+            const theme = localStorage.getItem('theme') ||
+                (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.classList.add(theme);
+        })();
+    </script>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/js/iconsSideBar.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/theme-toggle.js" asp-append-version="true"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+    <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"]</title>
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    </head>
+    
+    <script src="https://unpkg.com/gridjs/dist/gridjs.umd.js"></script>
+
+    <body class="bg-[var(--bg-color)] p-5">
+        <header class="flex justify-between items-center fixed top-0 left-0 right-0 z-10 p-5 border-b border-[var(--accent-color)] bg-[var(--bg-color2)]">
+            <div class="flex gap-16 justify-center items-center">
+                <a asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/public/img/logo-png-dark.svg" id="primary-logo" alt="Logo InfinityGrowth" height="auto"
+                        width="245px" />
+                </a>
+                @* @if (User.Identity.IsAuthenticated)
+                { 
+                    <a asp-area="" asp-controller="Home" asp-action="Index">
+                        <img src="~/public/icons/iconInfinityGrowth.svg" alt="Icono InfinityGrowth" height="auto"
+                            width="40px" />
+                    </a>
+                } *@
+            </div>
+            <div class="flex items-center gap-5">
+                <nav class="flex items-center gap-5">
+                    <div class="flex items-center gap-5">
+                        @if (User?.Identity?.IsAuthenticated == true)
+                        {
+                            <a asp-controller="Auth" asp-action="UserProfile" class="profile-icon">
+                                <svg class="w-12 hover:scale-110 text-[var(--text-primary)] transition duration-300 rounded-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <path fill="currentColor" fill-rule="evenodd"
+                                        d="M256 42.667A213.333 213.333 0 0 1 469.334 256c0 117.821-95.513 213.334-213.334 213.334c-117.82 0-213.333-95.513-213.333-213.334C42.667 138.18 138.18 42.667 256 42.667m21.334 234.667h-42.667c-52.815 0-98.158 31.987-117.715 77.648c30.944 43.391 81.692 71.685 139.048 71.685s108.104-28.294 139.049-71.688c-19.557-45.658-64.9-77.645-117.715-77.645M256 106.667c-35.346 0-64 28.654-64 64s28.654 64 64 64s64-28.654 64-64s-28.653-64-64-64" />
+                                </svg>
+                            </a>
+                            <form asp-controller="Auth" asp-action="Logout" method="post">
+                                <button type="submit" class="btn-secondary">Cerrar Sesión</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <a asp-controller="Auth" asp-action="Login" class="btn-primary">Iniciar Sesión</a>
+                            <a asp-controller="Home" asp-action="FormularioInteres" class="btn-secondary">Registrarse</a>
+                        }
+                    </div>
+                </nav>
+
+                <button id="theme-toggle-btn" class="p-2 hover:scale-110 hover:cursor-pointer transition">
+                    <div id="dark-icon-container" class="theme-toggle-icon transition hidden">
+                        <img src="~/public/icons/dark-mode.svg" alt="icono modo oscuro">
+                    </div>
+                    <div id="light-icon-container" class="theme-toggle-icon transition hidden">
+                        <img src="~/public/icons/light-mode.svg" alt="icono modo claro">
+                    </div>
+                </button>
+            </div>
+        </header>
+        <div class="flex min-h-screen">
+            @{
+                    if (User.Identity.IsAuthenticated) { await Html.RenderPartialAsync("_Sidebar"); }
+                    var mainMargin = User.Identity.IsAuthenticated ? "ml-72" : ""; 
+            }
+
+            <main role="main" class="@mainMargin flex-1 pt-32 pb-3 px-5">
+                @RenderBody()
+            </main>
+        </div>
+
+        <footer class="p-10 z-10 bg-[var(--bg-color2)] border-t border-[var(--accent-color)] text-[var(--text-primary)]">
+            <div class="text-center text-sm text-gray-500">
+                &copy; 2025 - Infinity Growth. Todos los derechos
+                reservados.
+            </div>
+        </footer>
+
+        @await RenderSectionAsync("Scripts", required: false)
+    </body>
+</html>

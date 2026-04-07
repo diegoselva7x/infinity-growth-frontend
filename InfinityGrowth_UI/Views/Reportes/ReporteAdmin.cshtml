@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Reportes Administrativos";
+}
+
+<div class="container mx-auto px-4 py-8 shadow-xl rounded-lg">
+    <h1 class="text-4xl font-bold text-[var(--text-primary)] mb-6">Reportes Administrativos</h1>
+
+    <!-- Dashboard Financiero -->
+    <div class="bg-[var(--accent-color)] rounded-lg p-4 mb-8 shadow-md">
+        <h3 class="text-3xl font-semibold text-[var(--text-primary)] mb-4">Resumen Global Financiero</h3>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-[var(--text-primary)] text-sm">
+            <div>
+                <p class="font-medium">Total Invertido en la Plataforma:</p>
+                <p id="totalInvertido">$0</p>
+            </div>
+            <div>
+                <p class="font-medium">Ganancias Generadas (Clientes):</p>
+                <p id="gananciasGeneradas" class="text-[var(--positive-color)] font-semibold">$0</p>
+            </div>
+            <div>
+                <p class="font-medium">Pérdidas Registradas (Clientes):</p>
+                <p id="perdidasGeneradas" class="text-[var(--negative-color)] font-semibold">$0</p>
+            </div>
+            <div>
+                <p class="font-medium">Comisiones Plataforma:</p>
+                <p id="comisionesPlataforma">$0</p>
+            </div>
+            <div>
+                <p class="font-medium">Volumen Movido en el Mes:</p>
+                <p id="volumenMovido">$0</p>
+            </div>
+            <div>
+                <p class="font-medium">Acción Más Rentable:</p>
+                <p id="accionMasRentable" class="text-[var(--positive-color)] font-semibold">-</p>
+            </div>
+            <div>
+                <p class="font-medium">Acción de Mayor Pérdida:</p>
+                <p id="accionMenosRentable" class="text-[var(--negative-color)] font-semibold">-</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tabla Administrativa -->
+    <div id="tabla-admin" class="overflow-x-auto rounded-lg shadow-lg"></div>
+</div>
+
+@section Scripts {
+    <script src="~/js/Reportes/AdminReporte.js" asp-append-version="true"></script>
+}
